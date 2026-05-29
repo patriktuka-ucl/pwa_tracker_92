@@ -1,0 +1,532 @@
+:root {
+
+  --bg: #0B0B0C;
+
+  --glass:
+    rgba(255,255,255,0.06);
+
+  --glass-border:
+    rgba(255,255,255,0.08);
+
+  --accent: #7BF1A8;
+
+  --text: #FFFFFF;
+
+  --muted: #8B8B93;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+  background:
+    radial-gradient(
+      circle at top,
+      #17171B,
+      #0B0B0C 40%
+    );
+
+  color: white;
+
+  font-family:
+    'Inter',
+    sans-serif;
+}
+
+.app {
+
+  max-width: 430px;
+
+  margin: auto;
+
+  min-height: 100dvh;
+
+  position: relative;
+  overflow-x: hidden;
+
+  padding:
+    calc(20px + env(safe-area-inset-top))
+    20px
+    calc(120px + env(safe-area-inset-bottom));
+
+
+}
+
+.page {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding:
+    calc(20px + env(safe-area-inset-top))
+    20px
+    calc(120px + env(safe-area-inset-bottom));
+
+  opacity: 0;
+
+  transform:
+    translateY(18px)
+    scale(0.985);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page.active {
+
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  pointer-events: auto;
+}
+
+.task-card,
+.glass-card,
+.nav-item,
+button {
+
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.task-card:active,
+.glass-card:active,
+.nav-item:active,
+button:active {
+
+  transform: scale(0.97);
+}
+
+.checkbox {
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.liquid-nav {
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.25);
+}
+
+.glass-card {
+
+  animation:
+    cardEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cardEnter {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.98);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+.checkbox.active {
+
+  background: var(--accent);
+
+  border-color: var(--accent);
+
+  transform: scale(1.12);
+}
+
+.page.active {
+
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  pointer-events: auto;
+}
+.hero {
+  margin-top: 12px;
+}
+
+.label,
+.small-label {
+
+  color: var(--muted);
+
+  font-size: 0.75rem;
+
+  letter-spacing: 0.2em;
+}
+
+.hero h1 {
+
+  margin-top: 12px;
+
+  font-size: 4.2rem;
+
+  font-weight: 800;
+
+  letter-spacing: -0.07em;
+}
+
+.date-range {
+
+  margin-top: 12px;
+
+  color: var(--muted);
+}
+
+.stats-grid {
+
+  margin-top: 24px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 14px;
+}
+
+.glass-card {
+
+  background: var(--glass);
+
+  border:
+    1px solid var(--glass-border);
+
+  backdrop-filter: blur(30px);
+
+  -webkit-backdrop-filter: blur(30px);
+
+  border-radius: 28px;
+
+  padding: 22px;
+}
+
+.glass-card p {
+  color: var(--muted);
+}
+
+.glass-card h2 {
+
+  margin-top: 10px;
+
+  font-size: 2rem;
+}
+
+.section-title {
+
+  margin-bottom: 18px;
+
+  color: var(--muted);
+}
+
+.heatmap-card,
+.chart-card {
+  margin-top: 18px;
+}
+
+.chart-card canvas {
+
+  margin-top: 12px;
+
+  height: 240px !important;
+}
+
+.heatmap {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  gap: 8px;
+}
+
+.day {
+
+  aspect-ratio: 1;
+
+  border-radius: 12px;
+
+  background:
+    rgba(255,255,255,0.05);
+}
+
+.day.level-1 {
+  background:
+    rgba(123,241,168,0.2);
+}
+
+.day.level-2 {
+  background:
+    rgba(123,241,168,0.45);
+}
+
+.day.level-3 {
+  background:
+    rgba(123,241,168,0.7);
+}
+
+.day.level-4 {
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 18px
+    rgba(123,241,168,0.25);
+}
+
+.top-row {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin-bottom: 28px;
+}
+
+.icon-btn {
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 16px;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.08);
+
+  background:
+    rgba(255,255,255,0.05);
+
+  color: white;
+
+  backdrop-filter: blur(20px);
+}
+
+.task-card {
+
+  background:
+    rgba(255,255,255,0.05);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.06);
+
+  border-radius: 24px;
+
+  padding: 18px 20px;
+
+  margin-bottom: 14px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.task-left h3 {
+  margin-bottom: 6px;
+}
+
+.task-left p {
+  color: var(--muted);
+}
+
+.checkbox {
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  border:
+    2px solid
+    rgba(255,255,255,0.1);
+}
+
+.checkbox.active {
+
+  background: var(--accent);
+
+  border-color: var(--accent);
+}
+
+.counter {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.counter button {
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color: white;
+}
+
+.liquid-nav {
+
+  position: fixed;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  bottom:
+    calc(
+      18px
+      + env(safe-area-inset-bottom)
+    );
+
+  width: calc(100% - 64px);
+
+  max-width: 300px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(30px);
+
+  -webkit-backdrop-filter: blur(30px);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.1);
+
+  border-radius: 32px;
+
+  display: flex;
+
+  justify-content: space-around;
+
+  padding: 12px;
+}
+
+.nav-item {
+
+  background: none;
+
+  border: none;
+
+  color: var(--muted);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 4px;
+
+  min-width: 70px;
+}
+
+.nav-item span {
+  font-size: 1.2rem;
+}
+
+.nav-item p {
+  font-size: 0.75rem;
+}
+
+.active-nav {
+  color: white;
+}
+
+.settings-card {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.settings-card input {
+
+  background:
+    rgba(255,255,255,0.05);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.06);
+
+  border-radius: 16px;
+
+  padding: 14px;
+
+  color: white;
+}
+
+.settings-card button {
+
+  border: none;
+
+  border-radius: 18px;
+
+  padding: 16px;
+
+  font-weight: 600;
+}
+
+#saveSettingsBtn {
+
+  background: var(--accent);
+
+  color: black;
+}
+
+#addHabitBtn {
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color: white;
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <title>Momentum</title>
+
+  <meta
+    name="theme-color"
+    content="#0B0B0C"
+  />
+
+  <link
+    rel="manifest"
+    href="manifest.json"
+  />
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+  ></script>
+
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- DASHBOARD -->
+
+  <section
+    id="dashboardPage"
+    class="page active"
+  >
+
+    <div class="hero">
+
+      <p class="label">
+        MOMENTUM
+      </p>
+
+      <h1 id="dayCounter">
+        DAY 1
+      </h1>
+
+      <div class="date-range">
+        <span>Jun 1 2026</span>
+        <span>→</span>
+        <span>Aug 31 2026</span>
+      </div>
+
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="glass-card">
+        <p>Current Streak</p>
+        <h2 id="streakCount">0</h2>
+      </div>
+
+      <div class="glass-card">
+        <p>Completion</p>
+        <h2 id="completionRate">0%</h2>
+      </div>
+
+    </div>
+
+    <div class="glass-card heatmap-card">
+
+      <div class="section-title">
+        Progress
+      </div>
+
+      <div
+        id="heatmap"
+        class="heatmap"
+      ></div>
+
+    </div>
+
+  </section>
+
+  <!-- TRACKER -->
+
+  <section
+    id="trackerPage"
+    class="page"
+  >
+
+    <div class="top-row">
+
+      <button
+        class="icon-btn"
+        onclick="showPage('dashboardPage')"
+      >
+        ←
+      </button>
+
+      <div>
+
+        <p class="small-label">
+          TODAY
+        </p>
+
+        <h2 id="selectedDateTitle">
+          DAY 1
+        </h2>
+
+      </div>
+
+    </div>
+
+    <div id="tasks"></div>
+
+  </section>
+
+  <!-- SETTINGS -->
+
+  <section
+    id="settingsPage"
+    class="page"
+  >
+
+    <div class="top-row">
+
+      <button
+        class="icon-btn"
+        onclick="showPage('dashboardPage')"
+      >
+        ←
+      </button>
+
+      <div>
+
+        <p class="small-label">
+          SETTINGS
+        </p>
+
+        <h2>
+          Preferences
+        </h2>
+
+      </div>
+
+    </div>
+
+    <div class="glass-card settings-card">
+
+      <label>
+        Reminder Time
+      </label>
+
+      <input
+        type="time"
+        id="reminderTimeInput"
+      />
+
+      <label>
+        Daily Habits
+      </label>
+
+      <div id="habitEditor"></div>
+
+      <button id="addHabitBtn">
+        + Add Habit
+      </button>
+
+      <button id="saveSettingsBtn">
+        Save Settings
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- NAV -->
+
+  <nav class="liquid-nav">
+
+    <button
+      class="nav-item active-nav"
+      onclick="showPage('dashboardPage')"
+    >
+      <span class="material-icons">home</span>
+      <p>Home</p>
+    </button>
+
+    <button
+      class="nav-item"
+      onclick="openToday()"
+    >
+      <span class="material-icons">today</span>
+      <p>Today</p>
+    </button>
+
+    <button
+      class="nav-item"
+      onclick="showPage('settingsPage')"
+    >
+      <span class="material-icons">settings</span>
+      <p>Settings</p>
+    </button>
+
+  </nav>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
